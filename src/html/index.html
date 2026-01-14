@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal Explorer - Interactive Mandelbrot & Julia Set Browser</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/controls.css">
+    <link rel="stylesheet" href="/css/minimap.css">
+    <link rel="stylesheet" href="/css/gallery.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Canvas -->
+        <div id="canvas-container">
+            <canvas id="main-canvas"></canvas>
+            <div id="loading-indicator">
+                <div class="spinner"></div>
+                <span>Loading Fractal Explorer...</span>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div id="control-panel">
+            <div class="panel-header">
+                <h2>Fractal Explorer</h2>
+            </div>
+
+            <div class="panel-section">
+                <h3>Mode</h3>
+                <div class="button-group">
+                    <button id="btn-mandelbrot" class="btn-mode active">Mandelbrot</button>
+                    <button id="btn-julia" class="btn-mode">Julia Set</button>
+                </div>
+            </div>
+
+            <div class="panel-section" id="julia-controls" style="display: none;">
+                <h3>Julia Parameter</h3>
+                <label>
+                    Real: <span id="julia-c-real-value">-0.7</span>
+                    <input type="range" id="julia-c-real" min="-2" max="2" step="0.001" value="-0.7">
+                </label>
+                <label>
+                    Imag: <span id="julia-c-imag-value">0.27</span>
+                    <input type="range" id="julia-c-imag" min="-2" max="2" step="0.001" value="0.27015">
+                </label>
+            </div>
+
+            <div class="panel-section">
+                <h3>Iterations</h3>
+                <input type="range" id="max-iterations" min="100" max="5000" step="100" value="1000">
+                <span id="iterations-value">1000</span>
+            </div>
+
+            <div class="panel-section">
+                <h3>Color Palette</h3>
+                <select id="palette-selector">
+                    <option value="0">Classic Blue-Yellow</option>
+                    <option value="1">Rainbow</option>
+                    <option value="2">Fire</option>
+                    <option value="3">Ice</option>
+                    <option value="4">Grayscale</option>
+                </select>
+            </div>
+
+            <div class="panel-section">
+                <h3>Coordinates</h3>
+                <div id="coordinate-display">
+                    <div class="coord-row">
+                        <span class="coord-label">Center:</span>
+                        <span id="coord-center">(-5.0e-1, 0.0e+0)</span>
+                    </div>
+                    <div class="coord-row">
+                        <span class="coord-label">Zoom:</span>
+                        <span id="coord-zoom">2.50e+2x</span>
+                    </div>
+                    <div class="coord-row">
+                        <span class="coord-label">Workers:</span>
+                        <span id="worker-count">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <button id="btn-reset" class="btn-action">Reset View</button>
+                <button id="btn-save" class="btn-action">Save Image</button>
+            </div>
+
+            <div class="panel-section">
+                <div class="help-text">
+                    <strong>Controls:</strong><br>
+                    • Scroll to zoom<br>
+                    • Drag to pan<br>
+                    • <strong>Shift+drag</strong> to zoom box<br>
+                    • Click to explore Julia set
+                </div>
+            </div>
+        </div>
+
+        <!-- Minimap -->
+        <div id="minimap-container">
+            <h4>Navigator</h4>
+            <canvas id="minimap-canvas"></canvas>
+        </div>
+
+        <!-- Preset Gallery (modal) -->
+        <div id="preset-gallery" class="hidden">
+            <div class="gallery-content">
+                <button id="btn-close-gallery" class="btn-close">&times;</button>
+                <h2>Interesting Locations</h2>
+                <div id="gallery-grid"></div>
+            </div>
+        </div>
+
+        <!-- Floating preset button -->
+        <button id="btn-open-gallery" class="floating-btn">
+            <span class="btn-icon">📍</span>
+            <span class="btn-text">Presets</span>
+        </button>
+    </div>
+
+    <!-- Load WASM module first -->
+    <script src="/fractal.js"></script>
+
+    <!-- Load application -->
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>
