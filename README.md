@@ -2,6 +2,8 @@
 
 An interactive, high-performance Mandelbrot and Julia set browser built with C++ compiled to WebAssembly.
 
+**[✨ Try it live on GitHub Pages ✨](https://wadelab.github.io/fractal-explorer/)**
+
 ## Features
 
 - **Interactive Exploration**: Smooth zoom and pan with mouse/touch controls
