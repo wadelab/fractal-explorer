@@ -11,7 +11,7 @@ export async function initWASM() {
             locateFile: (path) => {
                 // Handle both development and production paths
                 if (path.endsWith('.wasm') || path.endsWith('.js')) {
-                    return `/${path}`;
+                    return path;
                 }
                 return path;
             },
