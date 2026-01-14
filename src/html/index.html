@@ -61,6 +61,46 @@
                     <option value="3">Ice</option>
                     <option value="4">Grayscale</option>
                 </select>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="color-cycle-toggle">
+                    Animate Colors
+                </label>
+            </div>
+
+            <div class="panel-section collapsible">
+                <h3 class="collapsible-header">Orbit Traps <span class="toggle-icon">+</span></h3>
+                <div class="collapsible-content" style="display: none;">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="orbit-trap-toggle">
+                        Enable Orbit Traps
+                    </label>
+                    <label>
+                        Trap Type:
+                        <select id="orbit-trap-type">
+                            <option value="0">Point</option>
+                            <option value="1">Cross</option>
+                            <option value="2" selected>Circle</option>
+                            <option value="3">Line</option>
+                            <option value="4">Square</option>
+                        </select>
+                    </label>
+                    <label>
+                        X: <span id="orbit-trap-x-value">0</span>
+                        <input type="range" id="orbit-trap-x" min="-2" max="2" step="0.01" value="0">
+                    </label>
+                    <label>
+                        Y: <span id="orbit-trap-y-value">0</span>
+                        <input type="range" id="orbit-trap-y" min="-2" max="2" step="0.01" value="0">
+                    </label>
+                    <label>
+                        Size: <span id="orbit-trap-size-value">0.5</span>
+                        <input type="range" id="orbit-trap-size" min="0.01" max="2" step="0.01" value="0.5">
+                    </label>
+                    <label>
+                        Rotation: <span id="orbit-trap-rotation-value">0°</span>
+                        <input type="range" id="orbit-trap-rotation" min="0" max="6.283" step="0.05" value="0">
+                    </label>
+                </div>
             </div>
 
             <div class="panel-section">
