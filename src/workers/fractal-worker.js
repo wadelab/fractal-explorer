@@ -3,7 +3,7 @@
  */
 
 // Import the WASM module
-importScripts('/fractal.js');
+importScripts('../fractal.js');
 
 let wasmModule = null;
 let isInitialized = false;
@@ -16,7 +16,7 @@ async function initializeWASM() {
         wasmModule = await FractalModule({
             locateFile: (path) => {
                 if (path.endsWith('.wasm') || path.endsWith('.js')) {
-                    return `/${path}`;
+                    return `../${path}`;
                 }
                 return path;
             }

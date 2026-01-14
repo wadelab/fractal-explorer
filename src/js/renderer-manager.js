@@ -165,7 +165,7 @@ class WorkerPool {
         const initPromises = [];
 
         for (let i = 0; i < this.size; i++) {
-            const worker = new Worker('/workers/fractal-worker.js');
+            const worker = new Worker('workers/fractal-worker.js');
             const workerInfo = {
                 worker,
                 busy: false,
