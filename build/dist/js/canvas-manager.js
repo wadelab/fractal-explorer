@@ -81,6 +81,30 @@ export class CanvasManager {
         this.backCtx.fillRect(0, 0, this.width, this.height);
     }
 
+    drawImageData(imageData, x, y, width = null, height = null, useNearestNeighbor = false) {
+        if (width === null || height === null) {
+            // Direct draw at 1:1 scale
+            this.ctx.putImageData(imageData, x, y);
+        } else {
+            // Scaled draw
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = imageData.width;
+            tempCanvas.height = imageData.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.putImageData(imageData, 0, 0);
+
+            // Set smoothing mode
+            this.ctx.imageSmoothingEnabled = !useNearestNeighbor;
+
+            // Draw scaled
+            this.ctx.drawImage(
+                tempCanvas,
+                0, 0, imageData.width, imageData.height,
+                x, y, width, height
+            );
+        }
+    }
+
     getCanvas() {
         return this.canvas;
     }
